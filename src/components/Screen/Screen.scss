@@ -1,0 +1,22 @@
+.img-wrapper {
+    min-height: 500px;
+    width: 100%;
+    position: relative;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    img{
+    height: 100%;
+    width: 100%; 
+    }
+    .word-wrapper {
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+
+      .secondary-text {
+        font-weight: 600;
+        letter-spacing: 5px;
+        margin-left: 15px;
+      }
+    }
+  }
