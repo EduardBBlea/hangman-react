@@ -1,0 +1,24 @@
+.layout{
+    width: 500px;
+    height: 700px;
+    margin: auto;
+    position: relative;
+    .start-button{
+      position:absolute;
+      left: 50%;
+      top: 40%;
+      transform: translate(-50%,-50%);
+      z-index: 1;
+      background-color: hsla(360, 0, 85, 0.5);
+      border-radius: 5px;
+      box-shadow: 2px 2px 6px 2px rgba(0, 0, 0, 0.64);
+      padding: 20px 40px;
+      font-size: 1.2rem;
+      border: none;
+      &:hover{
+        cursor: pointer;
+        box-shadow: 3px 3px 7px 3px rgba(0, 0, 0, 0.75);
+      }
+    }
+    
+  }

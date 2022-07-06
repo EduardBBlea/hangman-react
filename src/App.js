@@ -1,14 +1,19 @@
-import Screen from "./components/Screen/Screen";
-import Keyboard from "./components/Keyboard/Keyboard";
+import useGlobalState from "./hooks/useGlobalState";
+import { GlobalProvider } from "./contexts/GlobalContext";
+
+import Layout from "./components/Layout/Layout";
 
 import "./App.scss";
 import "./fonts/RobotoMono-Regular.ttf";
 
 function App() {
+  const globalState = useGlobalState();
+
   return (
     <div className="App">
-      <Screen />
-      <Keyboard />
+      <GlobalProvider value={globalState}>
+        <Layout />
+      </GlobalProvider>
     </div>
   );
 }
