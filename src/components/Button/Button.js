@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useGlobalContext } from "../../contexts/GlobalContext";
 
 import "./Button.scss";
 
 const Button = ({ letter }) => {
+  const [disabled, setDisabled] = useState(false);
+
   const { guessLetter } = useGlobalContext();
 
   return (
-    <button className="letter" onClick={() => guessLetter(letter)}>
+    <button
+      className={disabled ? "letter-button-disabled" : "letter-button"}
+      disabled={disabled}
+      onClick={() => {
+        guessLetter(letter);
+        setDisabled(true);
+      }}
+    >
       {letter}
     </button>
   );

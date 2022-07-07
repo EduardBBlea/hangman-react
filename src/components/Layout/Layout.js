@@ -18,7 +18,7 @@ const Layout = () => {
         </button>
       )}
       <Screen />
-      <Keyboard />
+      {gameStarted && <Keyboard />}
     </div>
   );
 };

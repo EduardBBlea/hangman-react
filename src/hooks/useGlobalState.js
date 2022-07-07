@@ -7,6 +7,7 @@ const useGlobalState = () => {
   const [word, setWord] = useState("");
   const [pickedLetters, setPickedLetters] = useState([]);
   const [wordState, setWordState] = useState("");
+  const [wrongTries, setWrongTries] = useState(0);
 
   const startGame = () => {
     setGameStarted(true);
@@ -14,26 +15,27 @@ const useGlobalState = () => {
 
   const guessLetter = (letter) => {
     setPickedLetters([...pickedLetters, letter]);
+    if (!word.includes(letter)) {
+      setWrongTries((wrongTries) => wrongTries + 1);
+    }
   };
-
+  console.log(wrongTries);
   useEffect(() => {
     fetch("https://random-word-api.herokuapp.com/word")
       .then((response) => response.json())
       .then((data) => setWord(data[0].toUpperCase()));
-  }, [gameStarted]);
+  }, []);
 
   useEffect(() => {
     const $wordState = word
       .split("")
       .map((letter) => (pickedLetters.indexOf(letter) >= 0 ? letter : "_"))
       .join("");
-    console.log($wordState);
     setWordState($wordState);
   }, [pickedLetters, word, gameStarted]);
 
   return {
     gameStarted,
-    word,
     pickedLetters,
     setPickedLetters,
     setGameStarted,
@@ -41,6 +43,7 @@ const useGlobalState = () => {
     alphabet,
     guessLetter,
     wordState,
+    wrongTries,
   };
 };
 

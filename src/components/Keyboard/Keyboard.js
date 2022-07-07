@@ -7,7 +7,15 @@ import Button from "../Button/Button";
 import "./Keyboard.scss";
 
 const Keyboard = () => {
-  const { alphabet } = useGlobalContext();
+  const { alphabet, wrongTries } = useGlobalContext();
+
+  if (wrongTries === 6) {
+    return (
+      <div className="letters-container">
+        <h1>GAME OVER</h1>
+      </div>
+    );
+  }
 
   return (
     <div className="letters-container">

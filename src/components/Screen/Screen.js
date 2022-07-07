@@ -7,14 +7,18 @@ import WordBox from "../WordBox/WordBox";
 import "./Screen.scss";
 
 const Screen = () => {
-  const { wordState, gameStarted } = useGlobalContext();
+  const { wordState, gameStarted, wrongTries } = useGlobalContext();
 
   return (
     <div className="img-wrapper">
-      <img src={`./img/step0.png`} />
+      <img src={`./img/step${wrongTries}.png`} alt="background" />
       <div className="word-wrapper">
-        <p className="secondary-text">GUESS THE WORD:</p>
-        {gameStarted && <WordBox word={wordState} />}
+        {gameStarted && (
+          <div>
+            <p className="secondary-text">GUESS THE WORD:</p>
+            <WordBox word={wordState} />
+          </div>
+        )}
       </div>
     </div>
   );
